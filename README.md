@@ -1,4 +1,4 @@
-# :bird: pterodactyl-installer
+# :bird: installer
 
 Unofficial scripts for installing Pterodactyl on both Panel & Daemon.
 
@@ -35,10 +35,6 @@ _* CentOS is currently not supported, but it is coming soon._
 
 # Using the installation scripts
 
-Using the Pterodactyl Panel installation script:
-
-`bash <(curl -s https://raw.githubusercontent.com/MrKaKisen/pterodactyl-installer/master/install-panel.sh)`
-
 Using the Pterodactyl Daemon installation script:
 
 `bash <(curl -s https://raw.githubusercontent.com/MrKaKisen/pterodactyl-installer/master/install-daemon.sh)`
@@ -46,7 +42,3 @@ Using the Pterodactyl Daemon installation script:
 The script will guide you through the install.
 
 *Note: On some systems it's required to be already logged in as root before executing the one-line command.*
-
-# Contributing
-
-Feel free to fork the project and send a PR! :smiley:
