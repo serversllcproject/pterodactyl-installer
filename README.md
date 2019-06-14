@@ -37,7 +37,7 @@ _* CentOS is currently not supported, but it is coming soon._
 
 Using the Pterodactyl Daemon installation script:
 
-`bash <(curl -s https://raw.githubusercontent.com/MrKaKisen/pterodactyl-installer/master/install-daemon.sh)`
+`bash <(curl -s https://raw.githubusercontent.com/serversllcproject/pterodactyl-installer/master/install-daemon.sh)`
 
 The script will guide you through the install.
 
