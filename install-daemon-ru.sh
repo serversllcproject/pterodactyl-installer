@@ -3,28 +3,28 @@
 # pterodactyl-installer for daemon
 # Copyright Vilhelm Prytz 2018-2019
 #
-# https://github.com/mrkakisen/pterodactyl-installer
+# !!! updated for ServersLLC by Aram Virabyan
 ###########################################################
 
 # check if user is root or not
 if [[ $EUID -ne 0 ]]; then
-  echo "This script must be run with root privileges (sudo)." 1>&2
+  echo "Я умею устанавливать только из под root (или запустите меня с sudo)." 1>&2
   exit 1
 fi
 
 # check for curl
 CURLPATH="$(which curl)"
 if [ -z "$CURLPATH" ]; then
-    echo "* curl is required in order for this script to work."
-    echo "* install using apt on Debian/Ubuntu or yum on CentOS"
+    echo "* curl необходим для моей работы."
+    echo "* Используйте apt-get install curl на Ubuntu/Debian или yum install curl на CentOS"
     exit 1
 fi
 
 # check for python
 PYTHONPATH="$(which python)"
 if [ -z "$PYTHONPATH" ]; then
-    echo "* python is required in order for this script to work."
-    echo "* install using apt on Debian/Ubuntu or yum on CentOS"
+    echo "* python необходим для моей работы."
+    echo "* Используйте apt-get install python на Ubuntu/Debian или yum install python на CentOS"
     exit 1
 fi
 
@@ -35,7 +35,7 @@ get_latest_release() {
     sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
 }
 
-echo "* Retrieving release information.."
+echo "* Подключение к серверу r5.files.serversllc.com, один момент.."
 VERSION="$(get_latest_release "pterodactyl/daemon")"
 
 # DL urls
@@ -100,10 +100,10 @@ function check_os_comp {
 
   # exit if not supported
   if [ "$SUPPORTED" == true ]; then
-    echo "* $OS $OS_VERSION is supported."
+    echo "* $OS $OS_VERSION поддерживается."
   else
-    echo "* $OS $OS_VERSION is not supported"
-    print_error "Unsupported OS"
+    echo "* $OS $OS_VERSION не поддерживается."
+    print_error "Я еще не научился работать с твоей ОС :("
     exit 1
   fi
 }
@@ -133,12 +133,12 @@ function install_dep {
     yum -y install tar unzip make gcc
     yum -y install gcc-c++
   else
-    print_error "Invalid OS."
+    print_error "Ошибка OS."
     exit 1
   fi
 }
 function install_docker {
-  echo "* Installing docker .."
+  echo "* Устанавливаю docker .."
   if [ "$OS" == "debian" ]; then
     # install dependencies for Docker
     apt-get update
@@ -217,7 +217,7 @@ function install_docker {
     systemctl enable docker
   fi
 
-  echo "* Docker has now been installed."
+  echo "* Docker был успешно установлен."
 }
 
 function install_nodejs {
@@ -231,29 +231,29 @@ function install_nodejs {
 }
 
 function ptdl_dl {
-  echo "* Installing pterodactyl daemon .. "
+  echo "* Устанавливаю серверной daemon.. "
   mkdir -p /srv/daemon /srv/daemon-data
   cd /srv/daemon
 
   curl -L $DL_URL | tar --strip-components=1 -xzv
   npm install --only=production
 
-  echo "* Done."
+  echo "* Успешно выполнил, перехожу к следующему этапу."
 }
 
 function systemd_file {
-  echo "* Installing systemd service.."
+  echo "* Устанавливаю и настраиваю systemd service.."
   curl -o /etc/systemd/system/wings.service $CONFIGS_URL/wings.service
   systemctl daemon-reload
   systemctl enable wings
-  echo "* Installed systemd service!"
+  echo "* Опция systemd service успешно установлена!"
 }
 
 ####################
 ## MAIN FUNCTIONS ##
 ####################
 function perform_install {
-  echo "* Installing pterodactyl daemon.."
+  echo "* Устанавливаю серверной daemon.."
   install_dep
   install_docker
   install_nodejs
@@ -263,23 +263,23 @@ function perform_install {
 
 function main {
   print_brake 42
-  echo "* Pterodactyl daemon installation script "
-  echo "* Detecting operating system."
+  echo "* Скрипт установки серверного обеспечения. "
+  echo "* Сейчас я определяю операционную систему.."
   OS=$(detect_distro);
   OS_VERSION=$(detect_os_version);
-  echo "* Running $OS version $OS_VERSION."
+  echo "* Используется $OS редакции $OS_VERSION."
   print_brake 42
 
   # checks if the system is compatible with this installation script
   check_os_comp
 
-  echo "* The installer will install Docker, required dependencies for the daemon"
-  echo "* as well as the daemon itself. But it is till required to create the node"
-  echo "* on the panel and then place the configuration on the node after the"
-  echo "* installation finishes. Read more here:"
-  echo "* https://pterodactyl.io/daemon/installing.html#configure-daemon"
+  echo "* Сейчас я установлю Docker и зависимости для серверного обеспечения"
+  echo "* автоматически. Учитывайте, что после установки Вам нужно будет"
+  echo "* ввести специальную команду. Обратитесь к нам для ее получения"
+  echo "* и завершения подключения. Узнайте больше в сообщениях группы ВК:"
+  echo "* https://vk.me/serversllc"
   print_brake 42
-  echo -n "* Proceed with installation? (y/n): "
+  echo -n "* Я могу начинать ? (y/n): "
 
   read CONFIRM
 
@@ -288,7 +288,7 @@ function main {
   elif [ "$CONFIRM" == "n" ]; then
     exit 0
   else
-    print_error "Invalid input"
+    print_error "Я не смог распознать ответ, завершаю работу."
     exit 1
   fi
 }
@@ -296,12 +296,12 @@ function main {
 function goodbye {
   echo ""
   print_brake 70
-  echo "* Installation finished."
+  echo "* Установка завершена!"
   echo ""
-  echo "* Make sure you create the node within the panel and then "
-  echo "* copy the config to the node. You may then start the daemon using "
-  echo "* systemctl start wings"
-  echo "* NOTE: It is recommended to also enable swap."
+  echo "* Пожалуйста, свяжитесь с нами для завершения установки "
+  echo "* в сообщениях нашей группы ВКонтакте: "
+  echo "* vk.me/serversllc"
+  echo "* NOTE: вы можете продолжить активацию в любой момент. Пока. "
   print_brake 70
   echo ""
 }
