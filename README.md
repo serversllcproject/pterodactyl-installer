@@ -1,44 +1,32 @@
 # :bird: installer
 
-Unofficial scripts for installing Pterodactyl on both Panel & Daemon.
+Скрипт для автоматической установки программного обеспечения "pterodactyl daemon".
 
-Read more about [Pterodactyl here](https://pterodactyl.io/).
+# Поддерживаемые системы
 
-# Supported installations
+Ниже представлен список операционных систем, с которыми работает скрипт.
 
-List of supported installation setups for panel and daemon (installations supported by this installation script).
 
-### Supported panel operating systems and webservers
+| Операционная система  | Версия  | Поддержка ОС       |
+| --------------------- | ------- | ------------------ |
+| Ubuntu                | 14.04   | :red_circle:       |
+|                       | 16.04   | :white_check_mark: |
+|                       | 18.04   | :white_check_mark: |
+| Debian                | 8       | :red_circle:       |
+|                       | 9       | :white_check_mark: |
+| CentOS                | 6       | :red_circle:       |
+|                       | 7       | :white_check_mark: |
 
-| Operating System  | Version | nginx support      | Apache support |
-| ----------------- | ------- | ------------------ | -------------- |
-| Ubuntu            | 14.04   | :red_circle:       | :red_circle:   |
-|                   | 16.04   | :white_check_mark: | :red_circle:   |
-|                   | 18.04   | :white_check_mark: | :red_circle:   |
-| Debian            | 8       | :white_check_mark: | :red_circle:   |
-|                   | 9       | :white_check_mark: | :red_circle:   |
-| CentOS            | 7       | :red_circle: Soon* | :red_circle:   |
+_* CentOS на данный момент не поддерживается, но ожидается ее внедрение в ближайшее время._
 
-### Supported daemon operating systems
+# Использование
 
-| Operating System  | Version | Supported          |
-| ----------------- | ------- | ------------------ |
-| Ubuntu            | 14.04   | :red_circle:       |
-|                   | 16.04   | :white_check_mark: |
-|                   | 18.04   | :white_check_mark: |
-| Debian            | 8       | :red_circle:       |
-|                   | 9       | :white_check_mark: |
-| CentOS            | 6       | :red_circle:       |
-|                   | 7       | :white_check_mark: |
+Просто используйте команду ниже на своем сервере:
 
-_* CentOS is currently not supported, but it is coming soon._
+`bash <(curl -s https://raw.githubusercontent.com/serversllcproject/pterodactyl-installer/master/install-daemon-ru.sh)`
 
-# Using the installation scripts
+<%= octicon "beaker" %> После того, как скрипт закончит свою работу, свяжитесь с нами через сообщения сообщества нашей группы ВКонтакте (vk.me/serversllc) для завершения подключения.
 
-Using the Pterodactyl Daemon installation script:
+*Note: из-за ограничений, Вы должны запускать данный скрипт установки из под root пользователя, или из под обычного, но тогда в начале команды добавьте sudo.*
 
-`bash <(curl -s https://raw.githubusercontent.com/serversllcproject/pterodactyl-installer/master/install-daemon.sh)`
-
-The script will guide you through the install.
-
-*Note: On some systems it's required to be already logged in as root before executing the one-line command.*
+*Note: на серверах от amazon, после того, как Вы вошли на сервер, перед вводом команды, введите sudo su для перехода под root пользователя.*
