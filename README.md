@@ -1,13 +1,13 @@
-# :bird: installer
+# :bird: Installer
 
-:yum: Скрипт для автоматической установки программного обеспечения "pterodactyl daemon".
+:yum: The script for the automatic installation of the software "pterodactyl daemon".
 
-# Поддерживаемые системы
+# Supported systems
 
-Ниже представлен список операционных систем, с которыми работает скрипт.
+Below is a list of operating systems with which the script works.
 
 
-| Операционная система  | Версия  | Поддержка ОС       |
+| Operating system      | Version | Compatibility      |
 | --------------------- | ------- | ------------------ |
 | Ubuntu                | 14.04   | :red_circle:       |
 |                       | 16.04   | :white_check_mark: |
@@ -17,16 +17,16 @@
 | CentOS                | 6       | :red_circle:       |
 |                       | 7       | :white_check_mark: |
 
-:point_right: _* CentOS на данный момент не поддерживается, но ожидается ее внедрение в ближайшее время._
+:point_right: _* CentOS is not currently supported, but it is expected to be implemented soon.
 
-# Использование
+# Use
 
-:facepunch: Просто используйте команду ниже на своем сервере:
+:facepunch: Just use the command below on your server:
 
 `bash <(curl -s https://raw.githubusercontent.com/serversllcproject/pterodactyl-installer/master/install-daemon-ru.sh)`
 
-:blue_heart: После того, как скрипт закончит свою работу, свяжитесь с нами через сообщения сообщества нашей группы ВКонтакте (vk.me/serversllc) для завершения подключения.
+:blue_heart: Once the script is done, contact us through the community messages of our VKontakte (vk.me/serversllc) community to complete the connection.
 
-:fire: *Note: из-за ограничений, Вы должны запускать данный скрипт установки из под root пользователя, или из под обычного, но тогда в начале команды добавьте sudo.*
+:fire: *Note: Because of the limitations, you have to run this script setup from under the user's root, or from under the usual, but then at the beginning of the command add sudo.*
 
-:cold_sweat: *Note: на серверах от amazon, после того, как Вы вошли на сервер, перед вводом команды, введите sudo su для перехода под root пользователя.*
+:cold_sweat: *Note: On amazon servers, after you've logged on to the server, before entering the command, enter sudo su to go under the user's root.*
